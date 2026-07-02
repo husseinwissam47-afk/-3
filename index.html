@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>حاسبة المرحلة الثالثة</title>
+<style>
+body { font-family: sans-serif; background: #f0f4f8; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+table { width: 100%; max-width: 600px; background: #fff; border-collapse: collapse; margin-bottom: 20px; }
+th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
+th { background: #2563eb; color: white; }
+select { width: 100%; padding: 8px; }
+button { background: #2563eb; color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; }
+.result { margin-top: 20px; padding: 20px; background: #e0f2fe; border-radius: 8px; font-weight: bold; font-size: 18px; text-align: center; }
+</style>
+</head>
+<body>
+
+<h1>حاسبة المرحلة الثالثة</h1>
+
+<table>
+<thead><tr><th>Module</th><th>Credit</th><th>التقدير</th></tr></thead>
+<tbody>
+<tr><td>ID</td><td>11</td><td><select class="grade"><option value="5">امتياز</option><option value="4.5">جيد جدا</option><option value="4">جيد</option><option value="3">متوسط</option><option value="2">مقبول</option><option value="1">ضعيف</option></select></td></tr>
+<tr><td>CA</td><td>10</td><td><select class="grade"><option value="5">امتياز</option><option value="4.5">جيد جدا</option><option value="4">جيد</option><option value="3">متوسط</option><option value="2">مقبول</option><option value="1">ضعيف</option></select></td></tr>
+<tr><td>RM</td><td>5</td><td><select class="grade"><option value="5">امتياز</option><option value="4.5">جيد جدا</option><option value="4">جيد</option><option value="3">متوسط</option><option value="2">مقبول</option><option value="1">ضعيف</option></select></td></tr>
+<tr><td>NT</td><td>4</td><td><select class="grade"><option value="5">امتياز</option><option value="4.5">جيد جدا</option><option value="4">جيد</option><option value="3">متوسط</option><option value="2">مقبول</option><option value="1">ضعيف</option></select></td></tr>
+<tr><td>PHC</td><td>4</td><td><select class="grade"><option value="5">امتياز</option><option value="4.5">جيد جدا</option><option value="4">جيد</option><option value="3">متوسط</option><option value="2">مقبول</option><option value="1">ضعيف</option></select></td></tr>
+<tr><td>ImD</td><td>2</td><td><select class="grade"><option value="5">امتياز</option><option value="4.5">جيد جدا</option><option value="4">جيد</option><option value="3">متوسط</option><option value="2">مقبول</option><option value="1">ضعيف</option></select></td></tr>
+<tr><td>RP</td><td>3</td><td><select class="grade"><option value="5">امتياز</option><option value="4.5">جيد جدا</option><option value="4">جيد</option><option value="3">متوسط</option><option value="2">مقبول</option><option value="1">ضعيف</option></select></td></tr>
+<tr><td>SSC</td><td>1</td><td><select class="grade"><option value="5">امتياز</option><option value="4.5">جيد جدا</option><option value="4">جيد</option><option value="3">متوسط</option><option value="2">مقبول</option><option value="1">ضعيف</option></select></td></tr>
+</tbody>
+</table>
+
+<button onclick="calc()">احسب</button>
+<div class="result" id="res">النتيجة ستظهر هنا</div>
+
+<script>
+function calc() {
+let total = 0;
+let units = [11,10,5,4,4,2,3,1];
+let unitsSum = 40;
+let selects = document.querySelectorAll('.grade');
+
+for(let i=0;i<selects.length;i++){
+ total += parseFloat(selects[i].value) * units[i];
+}
+
+let gpa = total / unitsSum;
+
+let note = gpa >= 4.5 ? "امتياز" :
+           gpa >= 4.0 ? "جيد جدا" :
+           gpa >= 3.0 ? "جيد" :
+           gpa >= 2.0 ? "متوسط" :
+           gpa >= 1.0 ? "مقبول" : "ضعيف";
+
+document.getElementById('res').innerHTML =
+"المعدل: " + gpa.toFixed(3) +
+"<br>التقدير: " + note +
+"<br>الوحدات الكلية: 40" +
+"<br>وزن المرحلة الثالثة بالتراكمي: " + gpa.toFixed(3) + " / 5";
+}
+</script>
+
+<div style="margin-top:20px;font-size:20px;font-weight:bold">
+<a href="https://t.me/medicinewithfunny" target="_blank" style="text-decoration:none;color:#2563eb;">
+by طب 🩺 وسد الباب 🚪
+</a>
+</div>
+
+</body>
+</html>
